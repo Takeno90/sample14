@@ -8,22 +8,21 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
+import model.Account;
 import model.AccountLogic;
-import model.Login;
 
 /**
- * Servlet implementation class LoginServlet
+ * Servlet implementation class CreateServlet
  */
-@WebServlet("/LoginServlet")
-public class LoginServlet extends HttpServlet {
+@WebServlet("/CreateServlet")
+public class CreateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LoginServlet() {
+    public CreateServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,8 +31,7 @@ public class LoginServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//フォワード
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/create.jsp");
 		dispatcher.forward(request, response);
 	}
 
@@ -41,29 +39,21 @@ public class LoginServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//リクエストパラメータの取得
 		request.setCharacterEncoding("UTF-8");
 		String userId = request.getParameter("userId");
 		String pass = request.getParameter("pass");
+		String mail = request.getParameter("mail");
+		String name = request.getParameter("name");
+		int age = Integer.parseInt(request.getParameter("age"));
 
-		//ログイン処理の実行
-		Login login = new Login(userId,pass);
+		Account account = new Account(userId,pass,mail,name,age);
+		AccountLogic createLogic = new AccountLogic();
+		boolean isCreate = createLogic.create(account);
 
-		AccountLogic bo = new AccountLogic();
-		boolean result = bo.execute(login);
+		request.setAttribute("isCreate", isCreate);
 
-		//ログイン処理の成否によって処理を分岐
-		if(result) {//ログイン成功時
-			//セッションスコープに保存
-			HttpSession session = request.getSession();
-			session.setAttribute("userId", userId);
-
-			//フォワード
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/loginOK.jsp");
-			dispatcher.forward(request, response);
-		}else {//ログイン失敗時
-			//リダイレクト
-			response.sendRedirect("/sukkiriShop/LoginServlet");
-		}
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/createResult.jsp");
+		dispatcher.forward(request, response);
 	}
+
 }

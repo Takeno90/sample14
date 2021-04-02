@@ -7,7 +7,7 @@
 <title>スッキリ商店</title>
 </head>
 <body>
-<form action="/sample14/LoginServlet" method="post">
+<form action="/sukkiriShop/LoginServlet" method="post">
 	<p>ユーザーID:<input type="text" name="userId"></p>
 	<p>パスワード:<input type="password" name="pass"></p>
 	<input type="submit" value="ログイン">

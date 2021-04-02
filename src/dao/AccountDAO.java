@@ -12,14 +12,13 @@ import model.Login;
 public class AccountDAO {
 	//データベース接続に使用する情報
 	private final String JDBC_URL =
-			"jdbc:h2:tcp://localhost/~/sukkiriShop";
-	private final String DB_USER = "sa";
+			"jdbc:mysql://localhost/sukkiriShop?serverTimeZone=JST";
+	private final String DB_USER = "root";
 	private final String DB_PASS = "";
 
+	//ログイン処理
 	public Account findByLogin(Login login) {
 		Account account = null;
-
-		//データベースへ接続
 		try(Connection conn = DriverManager.getConnection(JDBC_URL, DB_USER, DB_PASS)){
 
 			//SELECT文を準備
@@ -48,4 +47,27 @@ public class AccountDAO {
 		//見つかったユーザーまたはnullを返す
 		return account;
 	}
+
+	//ユーザー登録処理
+	public boolean create(Account account) {
+		try(Connection conn = DriverManager.getConnection(JDBC_URL,DB_USER,DB_PASS)){
+			String sql = "INSERT INTO ACCOUNT VALUES (?,?,?,?,?)";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+			pStmt.setString(1, account.getUserId());
+			pStmt.setString(2, account.getPass());
+			pStmt.setString(3, account.getMail());
+			pStmt.setString(4, account.getName());
+			pStmt.setInt(5, account.getAge());
+
+			int result = pStmt.executeUpdate();
+			if(result != 1) {
+				return false;
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+		return true;
+	}
+
 }

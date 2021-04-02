@@ -1,7 +1,7 @@
 package test;
 
 import model.Login;
-import model.LoginLogic;
+import model.AccountLogic;
 
 public class LoginLogicTest {
 	public static void main(String[] args) {
@@ -10,7 +10,7 @@ public class LoginLogicTest {
 	}
 	public static void testExecute1() {
 		Login login = new Login("minato","1234");
-		LoginLogic bo = new LoginLogic();
+		AccountLogic bo = new AccountLogic();
 		boolean result = bo.execute(login);
 		if(result) {
 			System.out.println("testExecute1:成功しました");
@@ -20,7 +20,7 @@ public class LoginLogicTest {
 	}
 	public static void testExecute2() {
 		Login login = new Login("minato","12345");
-		LoginLogic bo = new LoginLogic();
+		AccountLogic bo = new AccountLogic();
 		boolean result = bo.execute(login);
 		if(!result) {
 			System.out.println("testExecute2:成功しました");

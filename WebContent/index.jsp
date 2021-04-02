@@ -7,9 +7,5 @@
 <title>スッキリ商店</title>
 </head>
 <body>
-<ul>
- <li><a href="/sukkiriShop/LoginServlet">ログイン</a></li>
- <li><a href="/sukkiriShop/CreateServlet">ユーザー登録</a></li>
-</ul>
 </body>
 </html>
