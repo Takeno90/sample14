@@ -26,7 +26,7 @@
 					<td><%= product.getProductId() %></td>
 					<td><%= product.getProductName() %></td>
 					<td><%= product.getProductPrice() %>円</td>
-					<td><button type="submit" name="<%= product.getProductId()%>">詳細</button>
+					<td><button name="productId" value= "<%= product.getProductId()%>">詳細</button>
 					<!-- <td><input type="submit" value="詳細" name=""></td> -->
 						<!-- <select name="count">
 							<option value="1">1</option>

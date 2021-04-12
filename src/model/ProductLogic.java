@@ -18,4 +18,9 @@ public class ProductLogic {
 //		}
 	}
 
+	public Product findOne(int productId) {
+		ProductDAO dao = new ProductDAO();
+		Product product = dao.findOne(productId);
+		return product;
+	}
 }
