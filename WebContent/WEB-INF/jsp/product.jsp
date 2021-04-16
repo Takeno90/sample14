@@ -25,7 +25,7 @@
 				<option value="7">7</option>
 			</select>
 			</p>
-			<p><button>購入</button></p>
+			<p><button>カートに入れる</button></p>
 			</form>
 
 	<% }else{ %>

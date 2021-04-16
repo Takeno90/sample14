@@ -34,6 +34,7 @@
 		</table>
 		<h3>合計金額<%= totalPrice %>円</h3>
 	</div>
+	<a href="/sukkiriShop/ProductServlet">商品一覧へ</a>
 
 </body>
 </html>
