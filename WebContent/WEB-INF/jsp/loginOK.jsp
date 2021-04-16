@@ -11,6 +11,7 @@
 <body>
 	<p>ようこそ<c:out value="${userId}" />さん</p>
 	<p><a href="/sukkiriShop/ProductServlet">商品一覧ページへ</a></p>
+	<p><a href="/sukkiriShop/CartServlet">カートへ</a></p>
 	<p><a href="/sukkiriShop/WelcomeServlet">トップへ</a></p>
 </body>
 </html>
