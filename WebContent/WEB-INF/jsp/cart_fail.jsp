@@ -4,11 +4,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<jsp:include page="/WEB-INF/jsp/boot_css.jsp"></jsp:include>
+<title>スッキリ商店</title>
 </head>
 <body>
+<jsp:include page="/WEB-INF/jsp/nav.jsp"></jsp:include>
 カート追加失敗しました
-<a href=/sukkiriShop/ProductServlet>商品一覧へ</a>
-
+<p><a href=/sukkiriShop/ProductServlet>商品一覧へ</a></p>
+<jsp:include page="/WEB-INF/jsp/boot_js.jsp"></jsp:include>
 </body>
 </html>

@@ -17,7 +17,7 @@ public class CartDAO {
 
 	public boolean add(String userId, int productId, int quantity) {
 		try (Connection conn = DriverManager.getConnection(JDBC_URL, DB_USER, DB_PASS)) {
-			String sql = "INSERT INTO CART (USER_ID,PRODUCT_ID,QUANTITY) VALUES (?,?,?)";
+			String sql = "INSERT INTO HISTORY (USER_ID,PRODUCT_ID,QUANTITY) VALUES (?,?,?)";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			pStmt.setString(1, userId);
@@ -38,7 +38,7 @@ public class CartDAO {
 	public List<Cart> findList(String userId) {
 		List<Cart> cartList = new ArrayList<>();
 		try (Connection conn = DriverManager.getConnection(JDBC_URL, DB_USER, DB_PASS)) {
-			String sql = "SELECT p.PRODUCT_ID,p.PRODUCT_NAME,p.PRODUCT_PRICE,sum(c.QUANTITY) FROM PRODUCT AS p,CART AS c WHERE c.USER_ID = ? AND p.PRODUCT_ID = c.PRODUCT_ID GROUP BY p.PRODUCT_ID";
+			String sql = "SELECT p.PRODUCT_ID,p.PRODUCT_NAME,p.PRODUCT_PRICE,sum(h.QUANTITY) FROM PRODUCT AS p,HISTORY AS h WHERE h.USER_ID = ? AND p.PRODUCT_ID = h.PRODUCT_ID GROUP BY p.PRODUCT_ID";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			pStmt.setString(1, userId);
@@ -49,7 +49,7 @@ public class CartDAO {
 				int productId = rs.getInt("PRODUCT_ID");
 				String productName = rs.getString("PRODUCT_NAME");
 				int productPrice = rs.getInt("PRODUCT_PRICE");
-				int quantity = rs.getInt("sum(c.QUANTITY)");
+				int quantity = rs.getInt("sum(h.QUANTITY)");
 
 				Cart cart = new Cart(productId, productName, productPrice, quantity);
 				cartList.add(cart);

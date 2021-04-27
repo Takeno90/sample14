@@ -7,13 +7,24 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<jsp:include page="/WEB-INF/jsp/boot_css.jsp"></jsp:include>
+<link rel="stylesheet" href="/sukkiriShop/css/style.css">
+<title>スッキリ商店</title>
 </head>
 <body>
+<jsp:include page="/WEB-INF/jsp/nav.jsp"></jsp:include>
 	<p><%= userId %>のカート</p>
 	<div>
-		<table>
-			<thead><th>商品ID</th><th>商品名</th><th>価格</th><th>個数</th><th>計</th></thead>
+		<table class="table">
+			<thead>
+				<tr>
+					<th scope="col">商品ID</th>
+					<th scope="col">商品名</th>
+					<th scope="col">価格</th>
+					<th scope="col">個数</th>
+					<th scope="col">小計</th>
+				</tr>
+			</thead>
 			<tbody>
 				<% int totalPrice = 0; %>
 				<% for(Cart cart : cartList){ %>
@@ -36,5 +47,6 @@
 	</div>
 	<a href="/sukkiriShop/ProductServlet">商品一覧へ</a>
 
+<jsp:include page="/WEB-INF/jsp/boot_js.jsp"></jsp:include>
 </body>
 </html>

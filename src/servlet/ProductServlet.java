@@ -49,7 +49,6 @@ public class ProductServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
 		//パラメータ取得
 		int productId = Integer.parseInt(request.getParameter("productId"));
 		ProductLogic bo = new ProductLogic();

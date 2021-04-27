@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<jsp:include page="/WEB-INF/jsp/boot_css.jsp"></jsp:include>
 <title>スッキリ商店</title>
 </head>
 <body>
@@ -15,7 +16,8 @@
 			パスワード:<input type="password" name="pass">
 		</p>
 		<input type="submit" value="ログイン"> <input type="button"
-			value="戻る" onclick="history.back()">
+			value="Topへ" onclick="location.href='/sukkiriShop/'">
 	</form>
+<jsp:include page="/WEB-INF/jsp/boot_js.jsp"></jsp:include>
 </body>
 </html>

@@ -15,4 +15,5 @@ public class CartLogic {
 		List<Cart> cartList = dao.findList(userId);
 		return cartList;
 	}
+
 }

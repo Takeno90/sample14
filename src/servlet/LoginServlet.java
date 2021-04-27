@@ -42,7 +42,6 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//リクエストパラメータの取得
-		request.setCharacterEncoding("UTF-8");
 		String userId = request.getParameter("userId");
 		String pass = request.getParameter("pass");
 
@@ -59,7 +58,7 @@ public class LoginServlet extends HttpServlet {
 			session.setAttribute("userId", userId);
 
 			//フォワード
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/loginOK.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/MainServlet");
 			dispatcher.forward(request, response);
 		}else {//ログイン失敗時
 			//リダイレクト

@@ -38,8 +38,10 @@ public class CartServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		String userId = (String)session.getAttribute("userId");
 
+
 		//Logicへ渡す
 		CartLogic bo = new CartLogic();
+
 		List<Cart> cartList = bo.findList(userId);
 
 		//request scopeへ保存
@@ -53,8 +55,10 @@ public class CartServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//商品個数を取得
-		request.setCharacterEncoding("UTF-8");
 		int quantity = Integer.parseInt(request.getParameter("quantity"));
+
+		//個数をrequest scopeで保存(フォワード先で使うため)
+		request.setAttribute("quantity", quantity);
 
 		//userId,productIdをsession scopeから取得
 		HttpSession session = request.getSession();

@@ -6,9 +6,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<jsp:include page="/WEB-INF/jsp/boot_css.jsp"></jsp:include>
+<title>スッキリ商店</title>
 </head>
 <body>
+<jsp:include page="/WEB-INF/jsp/nav.jsp"></jsp:include>
 	<% if(product != null){%>
 			<form action="/sukkiriShop/CartServlet" method="post">
 			<h1><%= product.getProductId() %> <%= product.getProductName() %></h1>
@@ -33,5 +35,7 @@
 			<p>もう一回やり直してください</p>
 			<a href="/sukkiriShop/ProductServlet">商品一覧へ</a>
 	<% } %>
+
+<jsp:include page="/WEB-INF/jsp/boot_js.jsp"></jsp:include>
 </body>
 </html>

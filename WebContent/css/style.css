@@ -1,0 +1,30 @@
+@charset "UTF-8";
+
+/* * {
+	text-align: center;
+}
+
+h3 {
+	text-align: right;
+} */
+/* inputのborderの色 */
+.success {
+	border: 2px solid green;
+}
+
+.error {
+	border: 2px solid red;
+}
+
+/* エラーメッセージの非表示 */
+#name-error-message {
+	display: none;
+}
+
+#mail-error-message {
+	display: none;
+}
+/* エラーメッセージの非表示 */
+#pass-error-message {
+	display: none;
+}
